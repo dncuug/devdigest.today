@@ -1,14 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Core;
-using Core.Services;
-using Core.Services.Crosspost;
-using Core.ViewModels;
-using Core.Web;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
