@@ -78,11 +78,12 @@ namespace WebSite.Controllers
 
         private async Task<IReadOnlyCollection<PublicationViewModel>> GetTopPublications()
         {
-            var pagedResult = await _publicationService.GetPublications();
+            var publications = await _publicationService.GetTopPublications();
             var categories = await _publicationService.GetCategories();
-            var publications = pagedResult.Select(o => new PublicationViewModel(o, _settings.WebSiteUrl, categories));
             
-            return publications.Take(5).ToList();           
+            return publications
+            .Select(o => new PublicationViewModel(o, _settings.WebSiteUrl, categories))
+            .ToImmutableList();
         }
 
         private async Task<StaticPagedList<PublicationViewModel>> GetPublications()

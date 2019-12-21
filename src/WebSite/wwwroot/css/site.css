@@ -3,7 +3,7 @@
     padding-right: 15px;
 }
 
-.logo{
+.logo {
     font-family: 'Ubuntu', sans-serif;
     color: #FFF !important;
     display: table;
@@ -17,7 +17,7 @@ h3,
 h4,
 h5,
 .navbar .navbar-brand,
-.navbar .navbar-nav > li > a,
+.navbar .navbar-nav>li>a,
 footer,
 footer a {
     font-family: 'Ubuntu', sans-serif;
@@ -43,6 +43,7 @@ footer a {
     text-transform: uppercase;
     color: #FFF;
 }
+
 .social-link a:hover {
     text-decoration: none;
 }
@@ -69,9 +70,11 @@ footer a {
 
 .navbar {
     margin-top: -1px;
+    margin-left: -1px;
 }
 
-.navbar .navbar-nav > li > a{
+.navbar .dropdown-menu li,
+.navbar .navbar-nav>li>a {
     text-transform: uppercase;
 }
 
@@ -79,8 +82,10 @@ footer a {
     background-color: #FFF;
 }
 
-.dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover,
-.nav > li > a:focus, .nav > li > a:hover {
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover,
+.nav>li>a:focus,
+.nav>li>a:hover {
     background: none;
     color: #662079;
 }
@@ -100,7 +105,6 @@ footer a {
 .protocol {
     color: #AeAeAe;
 }
-
 
 @media screen and (min-width: 768px) {
     .jumbotron {
@@ -135,12 +139,12 @@ footer a {
     padding: 10px;
     font-family: 'Ubuntu', sans-serif;
 }
+
 .jumbotron {
     font-family: 'Ubuntu', sans-serif;
 }
 
-.jumbotron .container {
-}
+.jumbotron .container {}
 
 .jumbotron p {
     font-weight: normal;
@@ -192,13 +196,14 @@ footer a {
 }
 
 .clear {
-    clear: both;;
+    clear: both;
+    ;
 }
 
 .publication-preview .image-block img {
     width: 100%;
     margin-top: 10px;
-    border: 1px solid #EEE;    
+    border: 1px solid #EEE;
 }
 
 .share {
@@ -260,7 +265,7 @@ footer {
     background: #222;
     margin-bottom: 0;
     padding-bottom: 10px;
-    padding-top: 25px;   
+    padding-top: 25px;
 }
 
 footer h4,
@@ -301,34 +306,34 @@ footer ul {
     border: none;
 }
 
-.pagination > .active > a,
-.pagination > .active > a:focus,
-.pagination > .active > a:hover,
-.pagination > .active > span,
-.pagination > .active > span:focus,
-.pagination > .active > span:hover {
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
     background-color: #662079;
 }
 
-.pagination > li > a,
-.pagination > li > span {
+.pagination>li>a,
+.pagination>li>span {
     color: #662079;
     border: none;
     font-size: 12pt;
     font-weight: normal;
 }
 
-.pagination > li > a:hover,
-.pagination > li > span:hover,
-.pagination > li > a:focus,
-.pagination > li > span:focus {
+.pagination>li>a:hover,
+.pagination>li>span:hover,
+.pagination>li>a:focus,
+.pagination>li>span:focus {
     color: #662079;
 }
 
-.pagination > li:first-child > a,
-.pagination > li:first-child > span,
-.pagination > li:last-child > a,
-.pagination > li:last-child > span {
+.pagination>li:first-child>a,
+.pagination>li:first-child>span,
+.pagination>li:last-child>a,
+.pagination>li:last-child>span {
     border-radius: 0;
 }
 
@@ -409,55 +414,41 @@ footer ul {
 }
 
 @media only screen and (max-width: 414px) {
-
-    #navbar{
+    #navbar {
         text-align: center;
     }
     .navbar-nav {
         border-bottom: 1px solid #AAA;
     }
-
-    .publication-preview h3{
+    .publication-preview h3 {
         font-size: 2em;
     }
-    
     .share .btn-default,
     .share .btn-success {
         width: 100%;
         margin-top: 10px;
     }
-
     .social-buttons {
         text-align: center;
     }
-
-    .label {
-        display: none;
-    }
-
     .social-link {
         display: none !important;
     }
-
-    .nav > li.mobile-hidden {
+    .nav>li.mobile-hidden {
         display: none;
     }
-
     footer,
     footer .text-right {
         text-align: center;
         font-size: 9pt;
     }
-
     footer img {
         display: none;
     }
-
     .social-icons li {
         font-size: 50pt;
         padding-right: 15pt;
     }
-
     .jumbotron h1 {
         font-size: 18pt;
     }
@@ -473,18 +464,6 @@ footer ul {
 
 .founder {
     border: none;
-}
-
-.vacancies {
-}
-
-.vacancy-preview.hot {
-}
-
-.vacancy-preview.fresh {
-}
-
-.vacancy-preview {
 }
 
 .vacancies div a {
@@ -514,7 +493,7 @@ footer ul {
     width: 100%;
 }
 
-.profile-card  h1 {
+.profile-card h1 {
     font-size: 12pt;
     font-weight: bold;
 }

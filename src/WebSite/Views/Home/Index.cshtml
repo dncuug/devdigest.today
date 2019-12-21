@@ -27,7 +27,9 @@
 }
 
 @section top {
-    <!-- Carousel -->
+}
+
+<!-- Carousel -->
     <div id="carousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
@@ -47,16 +49,21 @@
 
         @for (int i = 0; i < Model.TopPublications.Count; i++)
         {
-            var p = Model.TopPublications.ElementAt(i);           
-
+            var p = Model.TopPublications.ElementAt(i);    
+            var categoryLink = $"/page/1?categoryId={p.Category.Id}";
+            
             <div class="item @GetActiveClass(i)">          
-              <div class="container">
+              <div class="container"> 
                 <div class="carousel-caption">
-                  <h1>@p.Title</h1>
+                  <h3>@p.Title</h3>
+                  <h4><a href="@categoryLink" class="label @p.Category.CssClass label-default">@p.Category.Name</a></h4>
                   <p>
-                    @p.Description
+                    <span class="category @p.Category.CssClass">
+                      @p.Description
+                    </span>
                   </p>
-                  <p><a class="btn btn-lg btn-primary" href="#" role="button">Read...</a></p>
+                  <p>
+                    <a class="btn btn-default" target="blank" href="@p.Url">Original publication&nbsp;<i class="glyphicon glyphicon-log-in"></i></a>                    
                 </div>
               </div>
             </div>
@@ -71,8 +78,6 @@
         <span class="sr-only">Next</span>
       </a>
     </div><!-- /.carousel -->
-
-}
 
 @for (var i = 0; i < Model.Publications.Count(); i++)
 {

@@ -42,7 +42,7 @@ namespace Core.ViewModels
             ViewsCount = publication.Views;
             
 
-            if (publication.CategoryId.HasValue && categories != null && categories.Any())
+            if (categories != null && categories.Any())
             {
                 var categoryName = categories
                     .Where(o => o.Id == publication.CategoryId)
@@ -51,8 +51,9 @@ namespace Core.ViewModels
 
                 Category = new CategoryViewModel
                 {
-                    Id = publication.CategoryId.Value,
-                    Name = categoryName
+                    Id = publication.CategoryId,
+                    Name = categoryName,
+                    CssClass = $"category-{publication.CategoryId}"
                 };
             }
 

@@ -29,9 +29,7 @@
             {
                 <img class="img-responsive" alt="@Model.Title" src="@Model.Image" />
             }
-        </div>
-
-       
+        </div>       
         
         <div class="clear"></div>
         
@@ -44,7 +42,7 @@
             <div class="col-md-4">
                 @if (Model.Category != null)
                 {
-                    <a href="@categoryLink" class="label category-label label-default">@Model.Category.Name</a>
+                    <a href="@categoryLink" class="label @Model.Category.CssClass label-default">@Model.Category.Name</a>
                 }
             </div>
             <div class="col-md-8 text-right">

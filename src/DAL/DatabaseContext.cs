@@ -25,18 +25,12 @@ namespace DAL
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Vacancy> Vacancy { get; set; }
 
-        private readonly string _connectionString;
-
-        public DatabaseContext(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql(_connectionString);
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseMySql("server=server2.agi.net.ua;user id=dot_net_in_ua;password=ZQRvbUYmD7Gr;database=dot_net_in_ua;charset=utf8");
             }
         }
 
@@ -316,6 +310,7 @@ namespace DAL
                 entity.HasOne(d => d.Category)
                     .WithMany(p => p.Publication)
                     .HasForeignKey(d => d.CategoryId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("Publication_Category_Id_fk");
 
                 entity.HasOne(d => d.Language)

@@ -20,9 +20,10 @@ namespace Core.Repositories
         Task IncreasePublicationViewCount(int id);
         Task<Publication> GetPublication(Uri uri);
         Task<IReadOnlyCollection<string>> GetCategoryTags(int categoryId);
+        Task<IReadOnlyCollection<Publication>> GetTopPublications(int languageId);
     }
 
-    public class PublicationRepository : IPublicationRepository 
+    public class PublicationRepository : IPublicationRepository
     {
         private readonly DatabaseContext _database;
         private readonly ILogger _logger;
@@ -32,7 +33,7 @@ namespace Core.Repositories
             _database = database;
             _logger = logger;
         }
-      
+
         public async Task<IReadOnlyCollection<Publication>> GetPublications(int? categoryId, int languageId, int page, int pageSize)
         {
             var skip = (page - 1) * pageSize;
@@ -63,10 +64,10 @@ namespace Core.Repositories
 
         public async Task<Publication> Save(Publication publication)
         {
-            
+
             _database.Add(publication);
             await _database.SaveChangesAsync();
-            
+
             publication = await _database.Publication.OrderBy(o => o.DateTime).LastOrDefaultAsync();
 
             _logger.Write(LogEventLevel.Information, $"Publication `{publication.Title}`  was saved. Id: {publication.Id}");
@@ -94,11 +95,26 @@ namespace Core.Repositories
                 .Where(o => o.Id == categoryId)
                 .Select(o => o.Tags)
                 .SingleOrDefaultAsync();
-            
+
             if (string.IsNullOrWhiteSpace(value))
                 return ImmutableArray<string>.Empty;
 
             return value.Split(' ').ToImmutableList();
+        }
+
+        public async Task<IReadOnlyCollection<Publication>> GetTopPublications(int languageId)
+        {
+            var categories = _database.Category.Select(o => o.Id).ToImmutableHashSet();
+
+            var publications = await _database.Publication
+                .Where(p => p.LanguageId == languageId)
+                .Where(p => p.DateTime > DateTime.Now.AddDays(-30))
+                .ToListAsync();
+
+            return publications
+                .GroupBy(p => p.CategoryId)
+                .Select(g => g.FirstOrDefault())
+                .ToImmutableList();
         }
     }
 }

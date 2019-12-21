@@ -9,7 +9,7 @@
     <h4>@Model.Title</h4>
     <h5>@Model.Company</h5>
     <div>
-        <span class="label category-label label-default">@Model.Category.Name</span>
+        <span class="label @Model.Category.CssClass label-default">@Model.Category.Name</span>
 
         @if (Model.Hot)
         {

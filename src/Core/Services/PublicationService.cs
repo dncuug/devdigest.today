@@ -18,6 +18,8 @@ namespace Core.Services
             int page = 1,
             int pageSize = 10, 
             int languageId = Language.EnglishId);
+        
+        Task<IReadOnlyCollection<Publication>> GetTopPublications(int languageId = Language.EnglishId);
 
         Task<IReadOnlyCollection<Category>> GetCategories();
         Task<Publication> Get(int id);
@@ -93,5 +95,10 @@ namespace Core.Services
         {
             AbsoluteExpiration = DateTimeOffset.Now.AddMinutes(1)
         };
+
+        public Task<IReadOnlyCollection<Publication>> GetTopPublications(int languageId = Language.EnglishId)
+        {
+            return _repository.GetTopPublications(languageId);
+        }
     }
 }
